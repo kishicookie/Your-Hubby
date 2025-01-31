@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine? ❤️</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+            padding: 50px;
+            position: relative;
+        }
+        h1 {
+            color: #ff3366;
+        }
+        .question {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        .buttons {
+            margin-top: 30px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 5px;
+            border-radius: 10px;
+        }
+        #yes-btn {
+            background-color: #ff3366;
+            color: white;
+        }
+        #no-btn, #new-no-btn {
+            background-color: #666;
+            color: white;
+            position: absolute;
+        }
+        #maybe-btn {
+            background-color: #ffcc00;
+            color: black;
+        }
+        #message, #maybe-message, #final-buttons {
+            display: none;
+            font-size: 22px;
+            color: #ff3366;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🌹 Hey Rukiiiii babyyy, Will You Be My Valentine? 🌹</h1>
+    <p class="question">I really like you! Will you go out with me cutuuuuu? 🥰</p>
+    
+    <div class="buttons">
+        <button id="yes-btn" onclick="sayYes()">Yes! ❤️</button>
+        <button id="no-btn" onmouseover="moveButton()">No 😢</button>
+        <button id="maybe-btn" onclick="sayMaybe()">Maybe 🤔</button>
+    </div>
+
+    <p id="message">Great! I'll meet you on 22nd 👉🏻👈🏻</p>
+    <p id="maybe-message">Sakamotu is sad, please reconsider 🥺</p>
+
+    <div id="final-buttons">
+        <button id="final-yes" onclick="sayYes()">Yes! ❤️</button>
+        <button id="new-no-btn" onclick="turnNoIntoYes()">No 😢</button>
+    </div>
+
+    <script>
+        function sayYes() {
+            document.getElementById("message").style.display = "block";
+            document.getElementById("yes-btn").style.display = "none";
+            document.getElementById("no-btn").style.display = "none";
+            document.getElementById("maybe-btn").style.display = "none";
+            document.getElementById("maybe-message").style.display = "none";
+            document.getElementById("final-buttons").style.display = "none";
+        }
+
+        function moveButton() {
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 50);
+            document.getElementById("no-btn").style.left = `${x}px`;
+            document.getElementById("no-btn").style.top = `${y}px`;
+        }
+
+        function sayMaybe() {
+            document.getElementById("maybe-message").style.display = "block";
+            document.getElementById("final-buttons").style.display = "block";
+            document.getElementById("yes-btn").style.display = "none";
+            document.getElementById("no-btn").style.display = "none";
+            document.getElementById("maybe-btn").style.display = "none";
+        }
+
+        function turnNoIntoYes() {
+            document.getElementById("new-no-btn").innerText = "Yes! ❤️";
+            document.getElementById("new-no-btn").onclick = sayYes;
+        }
+    </script>
+
+</body>
+</html>
